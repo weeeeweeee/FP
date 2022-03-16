@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eD/V8B83cBQL17TJaPD25zRRmy+mg61btux3/Tys5YbsmATnNVj7EKLktwzOwkmqV5fTSXoTeMK/F0hyU5cmdw==",
+  "success": true,
+  "projectFilePath": "F:\\Репа\\FP\\LR5.13\\LR5.13.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hide\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
