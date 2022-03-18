@@ -31,11 +31,50 @@ let f2 x =
             let digit = num % 10;
             let new_num = num / 10;
 
-            let m = 
+            let m =
                 if (digit > max) && (digit % 3 <> 0) then digit
                 else max
             fr new_num m
     fr x -1
+
+
+let min_div x =
+    let rec rec_md n m =
+        if m = n then 1
+        else
+            if n % m = 0 then m
+            else rec_md n (m + 1)
+    rec_md x 2
+
+let sum x =
+    let rec rsum num cur_sum =
+        if num = 0 then cur_sum
+        else
+            let digit = num % 10
+            let new_num = num / 10
+            if digit < 5 then
+                rsum new_num (cur_sum + digit)
+            else
+                rsum new_num cur_sum
+    rsum x 0
+
+let max_ncoprime x =
+    let md = min_div x
+    let rec rcoprime n m d =
+        if m = 1 then 1
+        else
+            if (not (check n m)) && (m % d <> 0) then
+                m
+            else
+                rcoprime n (m - 1) d
+
+    rcoprime x (x - 1) md
+                
+let f3 x =
+    let s = sum x
+    let c = max_ncoprime x
+    s*c
+        
 
 
 [<EntryPoint>]
@@ -50,5 +89,18 @@ let main argv =
     printf "f2(333) = %i, answer = -1\n" (f2 333)
     printf "f2(1210) = %i, answer = 2\n" (f2 1210)
 
+    printf "\n\n"
+
+    printf "f3(111) = %i, answer = 222\n" (f3 111)  // наим. делитель = 3
+                                                    // наиб. не взаимно простое = 74, 74 % 3 <> 0
+                                                    // => 74 * (1 + 1 + 1) = 222
+    
+    printf "f3(31) = %i, answer = 4\n" (f3 31)      // Для простых чисел нет наибольшего
+                                                    // не взаимно простого с ними числа такого,
+                                                    // чтобы оно было меньше, чем исходное простое
+                                                    // поэтому для простых чисел сделано исключение:
+                                                    // наибольшим не взаимно простым числом для простого
+                                                    // числа будем считать 1.
+                                                    // 1 * (3 + 1) = 4
 
     0
