@@ -34,8 +34,7 @@ let CoprimeTrav x (func: int -> int -> int) init (pred: int -> bool) =
             frec x (y + 1) func i pred
     frec x 1 func init pred
 
-[<EntryPoint>]
+[<EntryPoint>] 
 let main argv =
-    printf "%i\n" (DivTrav 120 (fun x y -> x + y) 0 (fun x -> x % 3 = 0)) // 3+6+12+15+24+30+60+120
-    printf "%i\n" (CoprimeTrav 13 (fun x y -> x * y) 1 (fun x -> x > 2 && x < 10)) // 3*4*5*6*7*8*9=181440
+    
     0
