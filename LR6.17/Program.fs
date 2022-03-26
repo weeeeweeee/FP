@@ -46,15 +46,15 @@ let findMin list =
     fm list list.Head 0 0
 
 let find list predNum =
-    let rec rf list num =
+    let rec rf list num new_list =
         match list with
         h::t -> 
             if (predNum num) then
-                h::(rf t (num+1))
+                rf t (num+1) (new_list@[h])
             else 
-                (rf t (num+1))
-        |[] -> []
-    rf list 0
+                rf t (num+1) new_list
+        |[] -> new_list
+    rf list 0 []
 
 let findInInterval list a b =
     find list (fun x -> x > a && x < b)
