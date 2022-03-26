@@ -12,7 +12,7 @@ let rec writeList = function
 
 let isPrime x =
     let rec rp (x:int) (p:int) =
-        if p > x then
+        if p >= x then
             true
         elif x % p = 0 then
             false
@@ -28,43 +28,26 @@ let pow x y =
     pr x y 1
 
 let makePrimeList x =
-    let rec mprl number prime degree =
+    let rec mprl number prime degree result_list =
         if prime <= number then
             let primeInDegree = pow prime degree
             if (number >= primeInDegree) && (isPrime prime) then
                 if (number % primeInDegree = 0) then
-                    prime::(mprl number prime (degree+1))
+                    mprl number prime (degree+1) (result_list@[prime])
                 else
-                    mprl number prime (degree+1)
+                    mprl number (prime+1) 1 result_list
             else
-                mprl number (prime+1) 1
+                mprl number (prime+1) 1 result_list
         else
-            []
+            result_list
 
-    mprl x 2 1
-
-let rec fr x =
-    if x <= 2 then
-        1
-    else
-        (fr (x-1)) + (fr (x-2))
-
-let fib x =
-    let rec fr x y last =
-        if x = 1 then
-            y
-        else
-            fr (x - 1) (y + last) y
-    fr x 1 0
-        
+    mprl x 2 1 []
 
 [<EntryPoint>]
 let main argv =
-    let rec f x y =
-        if x < y then
-            printf "%d\n" (fib x)
-        else
-            exit(-1)
-        f (x + 1) y
-    f 1 100
+    writeList (makePrimeList 8)
+    writeList (makePrimeList 19)
+    writeList (makePrimeList 169)
+    writeList (makePrimeList 225)
+    writeList (makePrimeList 490)
     0
