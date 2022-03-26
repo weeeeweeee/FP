@@ -59,13 +59,13 @@ let srt list =
         |Some(a) -> a
         |None -> exit(-1)
 
-    let rec fr list m = 
+    let rec fr list m new_list = 
         let max = findMax list (fun x -> x < m)
         match max with
-        |Some(a) -> a::(fr list a)
-        |None -> []
+        |Some(a) -> fr list a (new_list@[a])
+        |None -> new_list
 
-    max::(fr list max)
+    max::(fr list max [])
 
 let f list =
     let srt_list = srt list
