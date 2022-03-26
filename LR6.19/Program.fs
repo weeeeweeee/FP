@@ -24,15 +24,15 @@ let rec writeList = function
                        writeList tail
 
 let find list pred =
-    let rec rf list =
+    let rec rf list new_list =
         match list with
         h::t ->
             if (pred h) then
-                h::(rf t)
+                rf t (new_list@[h])
             else
-                (rf t)
-        |[] -> []
-    rf list
+                rf t new_list
+        |[] -> new_list
+    rf list []
 
 let findPositive list =
     find list (fun x -> x > 0)
