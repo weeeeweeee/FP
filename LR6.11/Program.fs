@@ -20,12 +20,14 @@ let rec writeList = function
                        printf "%d " head
                        writeList tail
 
-let rec f list func =
-    match list with
-    | h1::h2::h3::t -> (func h1 h2 h3)::(f t func)
-    | h1::h2::t -> (func h1 h2 1)::(f t func)
-    | h1::t -> (func h1 1 1)::(f t func)
-    | [] -> [] 
+let f list func =
+    let rec fr list func new_list =
+        match list with
+        | h1::h2::h3::t -> fr t func (new_list@[func h1 h2 h3])
+        | h1::h2::t -> fr t func (new_list@[func h1 h2 1])
+        | h1::t -> fr t func (new_list@[func h1 1 1])
+        | [] -> new_list 
+    fr list func []
 
 [<EntryPoint>]
 let main argv =
