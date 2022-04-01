@@ -2,20 +2,8 @@
 
 open System
 
-let rec readList n = 
-    if n=0 then []
-    else
-    let Head = System.Console.ReadLine()
-    let Tail = readList (n-1)
-    Head::Tail
 
-let readData = 
-    let n=System.Convert.ToInt32(System.Console.ReadLine())
-    readList n
 
-let writeList list =
-    List.iter (printf "%s ") list
-    printf "\n"
 
 let ASCIIAver (str : string) =              // Среднее ASCII-значение
     Seq.averageBy (fun x -> float x) str
@@ -58,7 +46,41 @@ let Difference str =
 let sortwithdiff str_list : string list =
     Seq.toList (Seq.sortBy Difference str_list)
 
+let input =
+    Convert.ToInt32(Console.ReadLine())
+
+let rec readstr lst n =
+    if n > 0 then
+        readstr (lst@[Console.ReadLine()]) (n-1)
+    else
+        lst
+
+let readData n =
+    readstr [] n
+
+let writeList list =
+    List.iter (printf "%s ") list
+    printf "\n"
+
 [<EntryPoint>]
 let main argv =
-    
+    printf "Выберите метод сортировки:\n"
+    printf "1. Сортировка в порядке увеличения квадратичного отклонения среднего веса 
+    ASCII-кода символа строки от среднего веса ASCII-кода символа первой
+    строки\n"
+    printf "2. Сортировка в порядке увеличения разницы между количеством сочетаний 
+    «гласная-согласная» и «согласная-гласная» в строке\n"
+    let f = Convert.ToInt32(Console.ReadLine())
+    let func =
+        match f with
+        1 -> sortwithsd
+        |2 -> sortwithdiff
+        |_ -> exit(-1)
+
+    printf "Введите количество строк: "
+    let n = Console.ReadLine()
+
+    printf "Введите %d строк: \n" (Convert.ToInt32(n))
+    let lst = readData (Convert.ToInt32(n))
+    writeList (func lst)
     0
