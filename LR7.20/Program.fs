@@ -36,6 +36,27 @@ let SquareDeviation str1 str2 =             // Что-то страшное...
 let sortwithsd str_list : string list =   // Собственно, сортировка
     Seq.toList (Seq.sortBy (fun x -> SquareDeviation (Seq.head str_list) x) str_list)
 
+let isVowel (x : char) =
+    (x = 'а') || (x = 'и') || (x = 'е') || (x = 'ё') || (x = 'о') || (x = 'у') || (x = 'ы') || (x = 'э') || (x = 'ю') || (x = 'я')
+
+let isLetter (x : char) =
+    (x >= 'а' && x <= 'я') || (x >= 'А' && x <= 'Я')
+
+let Difference str =
+    let s_str = Seq.permute (fun x -> (x + 1)%(Seq.length str)) str
+    let zip_str = Seq.skip 1 (Seq.zip str s_str)
+    let func x y =
+        if (isLetter (fst y)) && (isLetter (snd y)) then
+            if (isVowel (snd y)) && (not (isVowel (fst y))) then
+                x + 1
+            else if (isVowel (fst y)) && (not(isVowel(snd y))) then
+                x - 1
+            else x
+        else x
+    Seq.fold func 0 zip_str
+
+let sortwithdiff str_list : string list =
+    Seq.toList (Seq.sortBy Difference str_list)
 
 [<EntryPoint>]
 let main argv =
