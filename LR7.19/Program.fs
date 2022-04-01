@@ -27,6 +27,9 @@ let isPalyndrom str =
 let WordCount str =
     Seq.fold (fun s x -> if x = ' ' then s + 1 else s) 1 str
 
+let DiffNum str =
+    Seq.length (Seq.distinct str)
+
 [<EntryPoint>]
 let main argv =
     
