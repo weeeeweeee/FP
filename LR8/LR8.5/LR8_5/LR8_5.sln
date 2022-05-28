@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LR8_5", "LR8_5.fsproj", "{E826AC95-4E19-44AE-A1EF-F43D4E63D94A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "..\UI\UI.csproj", "{D39C2F4A-8436-4B93-A37E-4EA744DA7814}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E826AC95-4E19-44AE-A1EF-F43D4E63D94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E826AC95-4E19-44AE-A1EF-F43D4E63D94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E826AC95-4E19-44AE-A1EF-F43D4E63D94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E826AC95-4E19-44AE-A1EF-F43D4E63D94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39C2F4A-8436-4B93-A37E-4EA744DA7814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39C2F4A-8436-4B93-A37E-4EA744DA7814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39C2F4A-8436-4B93-A37E-4EA744DA7814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39C2F4A-8436-4B93-A37E-4EA744DA7814}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D99DB92-961F-4EF3-AADE-6939B7E450D7}
+	EndGlobalSection
+EndGlobal
